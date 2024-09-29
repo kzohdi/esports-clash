@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public abstract class InMemoryBaseRepository<T extends BaseEntity> implements BaseRepository<T> {
-    private final Map<String, T> entities = new HashMap<>();
+    protected final Map<String, T> entities = new HashMap<>();
 
     @Override
     public void save(T entity) {
@@ -23,5 +23,10 @@ public abstract class InMemoryBaseRepository<T extends BaseEntity> implements Ba
     @Override
     public Optional<T> findById(String id) {
         return Optional.ofNullable(entities.get(id));
+    }
+
+    @Override
+    public void clear() {
+        entities.clear();
     }
 }

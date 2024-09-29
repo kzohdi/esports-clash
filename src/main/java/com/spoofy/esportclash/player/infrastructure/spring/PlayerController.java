@@ -1,11 +1,11 @@
 package com.spoofy.esportclash.player.infrastructure.spring;
 
 import an.awesome.pipelinr.Pipeline;
+import com.spoofy.esportclash.core.domain.viewmodel.IdResponse;
 import com.spoofy.esportclash.player.application.usecases.CreatePlayerCommand;
 import com.spoofy.esportclash.player.application.usecases.DeletePlayerCommand;
 import com.spoofy.esportclash.player.application.usecases.GetPlayerByIdCommand;
 import com.spoofy.esportclash.player.application.usecases.RenamePlayerCommand;
-import com.spoofy.esportclash.player.domain.viewmodel.IdResponse;
 import com.spoofy.esportclash.player.domain.viewmodel.PlayerViewModel;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;

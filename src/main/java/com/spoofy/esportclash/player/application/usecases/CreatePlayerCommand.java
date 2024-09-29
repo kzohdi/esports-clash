@@ -1,7 +1,7 @@
 package com.spoofy.esportclash.player.application.usecases;
 
 import an.awesome.pipelinr.Command;
-import com.spoofy.esportclash.player.domain.viewmodel.IdResponse;
+import com.spoofy.esportclash.core.domain.viewmodel.IdResponse;
 
 public class CreatePlayerCommand implements Command<IdResponse> {
     private final String name;

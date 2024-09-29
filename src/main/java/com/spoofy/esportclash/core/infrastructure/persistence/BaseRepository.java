@@ -10,4 +10,6 @@ public interface BaseRepository<T extends BaseEntity> {
     void delete(T entity);
 
     Optional<T> findById(String id);
+
+    void clear();
 }

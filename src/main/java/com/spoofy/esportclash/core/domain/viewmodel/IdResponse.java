@@ -1,4 +1,4 @@
-package com.spoofy.esportclash.player.domain.viewmodel;
+package com.spoofy.esportclash.core.domain.viewmodel;
 
 public class IdResponse {
     private String id;
