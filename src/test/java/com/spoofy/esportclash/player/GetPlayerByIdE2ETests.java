@@ -1,44 +1,30 @@
 package com.spoofy.esportclash.player;
 
-import com.spoofy.esportclash.PostgreSQLTestConfiguration;
+import com.spoofy.esportclash.IntegrationTests;
 import com.spoofy.esportclash.player.application.ports.PlayerRepository;
 import com.spoofy.esportclash.player.domain.model.Player;
 import com.spoofy.esportclash.player.domain.viewmodel.PlayerViewModel;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-@Import(PostgreSQLTestConfiguration.class)
-@Transactional
-class GetPlayerByIdE2ETests {
+class GetPlayerByIdE2ETests extends IntegrationTests {
 
     @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @Autowired
-    private PlayerRepository repository;
+    private PlayerRepository playerRepository;
 
     @Test
     void shouldGetPlayerById() throws Exception {
         var existingPlayer = new Player("123", "name");
-        repository.save(existingPlayer);
+        playerRepository.save(existingPlayer);
 
         var result = mockMvc.perform(MockMvcRequestBuilders
-                        .get("/players/" + existingPlayer.getId()))
+                        .get("/players/" + existingPlayer.getId())
+                        .header("Authorization", createJwt())
+                )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
 
@@ -53,7 +39,8 @@ class GetPlayerByIdE2ETests {
     @Test
     void whenPlayerNotFound_shouldFail() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
-                        .get("/players/BadID"))
+                        .get("/players/BadID")
+                        .header("Authorization", createJwt()))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 }
