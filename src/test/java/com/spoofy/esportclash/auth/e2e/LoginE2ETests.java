@@ -1,4 +1,4 @@
-package com.spoofy.esportclash.auth;
+package com.spoofy.esportclash.auth.e2e;
 
 import com.spoofy.esportclash.IntegrationTests;
 import com.spoofy.esportclash.auth.application.services.passwordhasher.PasswordHasher;

@@ -1,4 +1,4 @@
-package com.spoofy.esportclash.auth;
+package com.spoofy.esportclash.auth.services;
 
 import com.spoofy.esportclash.auth.application.services.passwordhasher.BCryptPasswordHasher;
 import org.junit.jupiter.api.Test;

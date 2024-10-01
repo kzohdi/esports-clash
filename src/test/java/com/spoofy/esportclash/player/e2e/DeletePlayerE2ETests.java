@@ -1,4 +1,4 @@
-package com.spoofy.esportclash.player;
+package com.spoofy.esportclash.player.e2e;
 
 import com.spoofy.esportclash.IntegrationTests;
 import com.spoofy.esportclash.player.application.ports.PlayerRepository;

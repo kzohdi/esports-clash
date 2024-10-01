@@ -1,4 +1,4 @@
-package com.spoofy.esportclash.auth;
+package com.spoofy.esportclash.auth.usecases;
 
 import com.spoofy.esportclash.auth.application.exceptions.EmailAddressUnavailableException;
 import com.spoofy.esportclash.auth.application.ports.UserRepository;

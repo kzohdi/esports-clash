@@ -1,4 +1,4 @@
-package com.spoofy.esportclash.player;
+package com.spoofy.esportclash.player.usecases;
 
 import com.spoofy.esportclash.player.application.usecases.CreatePlayerCommand;
 import com.spoofy.esportclash.player.application.usecases.CreatePlayerCommandHandler;

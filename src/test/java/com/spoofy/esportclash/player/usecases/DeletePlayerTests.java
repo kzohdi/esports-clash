@@ -1,41 +1,40 @@
-package com.spoofy.esportclash.player;
+package com.spoofy.esportclash.player.usecases;
 
 import com.spoofy.esportclash.core.domain.exceptions.NotFoundException;
 import com.spoofy.esportclash.player.application.ports.PlayerRepository;
-import com.spoofy.esportclash.player.application.usecases.RenamePlayerCommand;
-import com.spoofy.esportclash.player.application.usecases.RenamePlayerCommandHandler;
+import com.spoofy.esportclash.player.application.usecases.DeletePlayerCommand;
+import com.spoofy.esportclash.player.application.usecases.DeletePlayerCommandHandler;
 import com.spoofy.esportclash.player.domain.model.Player;
 import com.spoofy.esportclash.player.infrastructure.persistence.ram.InMemoryPlayerRepository;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
-class RenamePlayerTests {
+class DeletePlayerTests {
 
     private final PlayerRepository repository = new InMemoryPlayerRepository();
 
-    private RenamePlayerCommandHandler createHandler() {
-        return new RenamePlayerCommandHandler(repository);
+    private DeletePlayerCommandHandler createHandler() {
+        return new DeletePlayerCommandHandler(repository);
     }
 
     @Test
-    void shouldRenamePlayer() {
-        var player = new Player("123", "old name");
+    void shouldDeletePlayer() {
+        var player = new Player("123", "name");
         repository.save(player);
 
-        var command = new RenamePlayerCommand(player.getId(), "new name");
+        var command = new DeletePlayerCommand(player.getId());
         var commandHandler = createHandler();
         commandHandler.handle(command);
 
-        var renamedPlayer = repository.findById(player.getId()).get();
+        var deletedPlayerQuery = repository.findById(player.getId());
 
-        assertEquals("new name", renamedPlayer.getName());
+        assertTrue(deletedPlayerQuery.isEmpty());
     }
 
     @Test
     void whenPlayerDoesNotExist_shouldFail() {
-        var command = new RenamePlayerCommand("BadID", "new name");
+        var command = new DeletePlayerCommand("BadID");
         var commandHandler = createHandler();
 
         var exception = assertThrows(NotFoundException.class, () ->

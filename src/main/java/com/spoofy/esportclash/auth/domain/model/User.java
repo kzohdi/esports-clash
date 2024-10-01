@@ -18,7 +18,7 @@ public class User extends BaseEntity {
     }
 
     public User(String id, String emailAddress, String passwordHash) {
-        this.id = id;
+        super(id);
         this.emailAddress = emailAddress;
         this.passwordHash = passwordHash;
     }

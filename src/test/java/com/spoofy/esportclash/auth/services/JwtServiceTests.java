@@ -1,4 +1,4 @@
-package com.spoofy.esportclash.auth;
+package com.spoofy.esportclash.auth.services;
 
 import com.spoofy.esportclash.auth.application.services.jwtservice.ConcreteJwtService;
 import com.spoofy.esportclash.auth.domain.model.User;

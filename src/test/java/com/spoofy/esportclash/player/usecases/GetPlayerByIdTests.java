@@ -1,4 +1,4 @@
-package com.spoofy.esportclash.player;
+package com.spoofy.esportclash.player.usecases;
 
 import com.spoofy.esportclash.core.domain.exceptions.NotFoundException;
 import com.spoofy.esportclash.player.application.ports.PlayerRepository;
