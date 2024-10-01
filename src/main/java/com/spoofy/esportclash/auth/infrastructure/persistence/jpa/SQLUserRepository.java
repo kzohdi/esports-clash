@@ -2,7 +2,7 @@ package com.spoofy.esportclash.auth.infrastructure.persistence.jpa;
 
 import com.spoofy.esportclash.auth.application.ports.UserRepository;
 import com.spoofy.esportclash.auth.domain.model.User;
-import com.spoofy.esportclash.core.infrastructure.persistence.sql.SQLBaseRepository;
+import com.spoofy.esportclash.core.infrastructure.persistence.jpa.SQLBaseRepository;
 import jakarta.persistence.EntityManager;
 
 import java.util.Optional;

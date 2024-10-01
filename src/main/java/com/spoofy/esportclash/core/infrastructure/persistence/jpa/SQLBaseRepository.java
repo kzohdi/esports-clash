@@ -1,4 +1,4 @@
-package com.spoofy.esportclash.core.infrastructure.persistence.sql;
+package com.spoofy.esportclash.core.infrastructure.persistence.jpa;
 
 import com.spoofy.esportclash.core.domain.model.BaseEntity;
 import com.spoofy.esportclash.core.infrastructure.persistence.BaseRepository;
@@ -6,8 +6,8 @@ import jakarta.persistence.EntityManager;
 
 import java.util.Optional;
 
-public abstract class SQLBaseRepository<T extends BaseEntity> implements BaseRepository<T> {
-    private final EntityManager entityManager;
+public abstract class SQLBaseRepository<T extends BaseEntity<T>> implements BaseRepository<T> {
+    protected final EntityManager entityManager;
 
     protected SQLBaseRepository(EntityManager entityManager) {
         this.entityManager = entityManager;

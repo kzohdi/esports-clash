@@ -4,7 +4,7 @@ import com.spoofy.esportclash.core.domain.model.BaseEntity;
 
 import java.util.Optional;
 
-public interface BaseRepository<T extends BaseEntity> {
+public interface BaseRepository<T extends BaseEntity<T>> {
     void save(T entity);
 
     void delete(T entity);
