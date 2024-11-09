@@ -1,0 +1,30 @@
+package com.spoofy.esportsclash.player.usecases;
+
+import com.spoofy.esportsclash.player.application.port.PlayerRepository;
+import com.spoofy.esportsclash.player.application.usecases.CreatePlayerCommand;
+import com.spoofy.esportsclash.player.application.usecases.CreatePlayerCommandHandler;
+import com.spoofy.esportsclash.player.infrastructure.persistence.ram.InMemoryPlayerRepository;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class CreatePlayerTests {
+
+    private final PlayerRepository playerRepository = new InMemoryPlayerRepository();
+
+    private final CreatePlayerCommandHandler createPlayerCommandHandler = new CreatePlayerCommandHandler(playerRepository);
+
+    @Test
+    void shouldCreatePlayer() {
+        // Given
+        var command = new CreatePlayerCommand("Name");
+
+        // When
+        var result = createPlayerCommandHandler.handle(command);
+
+        var actualPlayer = playerRepository.findById(result.getId()).get();
+
+        // Then
+        assertEquals(command.name(), actualPlayer.getName());
+    }
+}
