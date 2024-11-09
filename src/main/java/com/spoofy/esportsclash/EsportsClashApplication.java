@@ -1,4 +1,4 @@
-package com.spoofy.esports_clash;
+package com.spoofy.esportsclash;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
