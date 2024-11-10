@@ -1,4 +1,4 @@
-package com.spoofy.esports_clash;
+package com.spoofy.esportsclash;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
