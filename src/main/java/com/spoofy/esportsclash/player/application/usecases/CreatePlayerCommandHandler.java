@@ -1,15 +1,15 @@
 package com.spoofy.esportsclash.player.application.usecases;
 
 import an.awesome.pipelinr.Command;
+import com.spoofy.esportsclash.core.domain.viewmodel.IdResponse;
 import com.spoofy.esportsclash.player.application.port.PlayerRepository;
 import com.spoofy.esportsclash.player.domain.model.Player;
-import com.spoofy.esportsclash.core.domain.viewmodel.IdResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-@Component
+@Service
 @RequiredArgsConstructor
 public class CreatePlayerCommandHandler implements Command.Handler<CreatePlayerCommand, IdResponse> {
 

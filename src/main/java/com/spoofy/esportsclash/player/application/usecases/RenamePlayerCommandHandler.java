@@ -5,9 +5,9 @@ import an.awesome.pipelinr.Voidy;
 import com.spoofy.esportsclash.core.domain.exceptions.NotFoundException;
 import com.spoofy.esportsclash.player.application.port.PlayerRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @RequiredArgsConstructor
 public class RenamePlayerCommandHandler implements Command.Handler<RenamePlayerCommand, Voidy> {
 

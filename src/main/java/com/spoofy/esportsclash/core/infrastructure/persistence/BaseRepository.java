@@ -1,11 +1,13 @@
 package com.spoofy.esportsclash.core.infrastructure.persistence;
 
+import com.spoofy.esportsclash.core.domain.model.BaseModel;
+
 import java.util.Optional;
 
-public interface BaseRepository<T> {
-    void save(T entity);
+public interface BaseRepository<M extends BaseModel> {
+    void save(M entity);
 
-    Optional<T> findById(String id);
+    Optional<M> findById(String id);
 
     boolean existsById(String id);
 

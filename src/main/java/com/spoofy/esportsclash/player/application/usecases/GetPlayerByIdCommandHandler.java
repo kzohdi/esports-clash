@@ -6,9 +6,9 @@ import com.spoofy.esportsclash.player.application.port.PlayerRepository;
 import com.spoofy.esportsclash.player.domain.mapper.PlayerMapper;
 import com.spoofy.esportsclash.player.domain.viewmodel.PlayerViewModel;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @RequiredArgsConstructor
 public class GetPlayerByIdCommandHandler implements Command.Handler<GetPlayerByIdCommand, PlayerViewModel> {
 

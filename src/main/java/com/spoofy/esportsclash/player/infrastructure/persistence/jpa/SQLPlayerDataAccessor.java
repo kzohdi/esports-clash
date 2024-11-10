@@ -1,6 +1,6 @@
 package com.spoofy.esportsclash.player.infrastructure.persistence.jpa;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.spoofy.esportsclash.core.infrastructure.persistence.jpa.SQLBaseEntityDataAccessor;
 
-public interface SQLPlayerDataAccessor extends JpaRepository<SQLPlayer, String> {
+public interface SQLPlayerDataAccessor extends SQLBaseEntityDataAccessor<SQLPlayer> {
 }
