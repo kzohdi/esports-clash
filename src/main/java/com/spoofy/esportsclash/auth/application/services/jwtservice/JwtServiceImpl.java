@@ -4,13 +4,15 @@ import com.spoofy.esportsclash.auth.domain.model.AuthUser;
 import com.spoofy.esportsclash.auth.domain.model.User;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
+@Service
 public class JwtServiceImpl implements JwtService {
 
     private final SecretKey key;
@@ -21,7 +23,7 @@ public class JwtServiceImpl implements JwtService {
 
     private static final String EMAIL_ADDRESS_KEY = "emailAddress";
 
-    public JwtServiceImpl(long expiration) {
+    public JwtServiceImpl(@Value("${jwt.expiration}") long expiration) {
         this.key = Jwts.SIG.HS256.key().build();
         this.jwtParser = Jwts.parser()
                 .verifyWith(key)
