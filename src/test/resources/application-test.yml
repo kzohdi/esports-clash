@@ -1,0 +1,2 @@
+jwt:
+  expiration: 60 # 60 seconds

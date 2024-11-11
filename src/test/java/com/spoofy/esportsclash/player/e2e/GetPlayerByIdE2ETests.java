@@ -1,32 +1,18 @@
 package com.spoofy.esportsclash.player.e2e;
 
-import com.spoofy.esportsclash.PostgreSQLTestConfiguration;
+import com.spoofy.esportsclash.IntegrationTests;
 import com.spoofy.esportsclash.player.application.port.PlayerRepository;
 import com.spoofy.esportsclash.player.domain.model.Player;
 import com.spoofy.esportsclash.player.domain.viewmodel.PlayerViewModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.web.servlet.MockMvc;
-import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-@Import(PostgreSQLTestConfiguration.class)
-public class GetPlayerByIdE2ETests {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
+class GetPlayerByIdE2ETests extends IntegrationTests {
 
     @Autowired
     private PlayerRepository playerRepository;

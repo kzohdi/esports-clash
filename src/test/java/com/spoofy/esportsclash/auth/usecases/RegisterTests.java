@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RegisterTests {
+class RegisterTests {
 
     private final UserRepository userRepository = new InMemoryUserRepository();
 
