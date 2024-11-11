@@ -1,6 +1,6 @@
 package com.spoofy.esportsclash.player.e2e;
 
-import com.spoofy.esportsclash.IntegrationTests;
+import com.spoofy.esportsclash.IntegrationTestBase;
 import com.spoofy.esportsclash.player.application.port.PlayerRepository;
 import com.spoofy.esportsclash.player.domain.model.Player;
 import com.spoofy.esportsclash.player.domain.viewmodel.PlayerViewModel;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class GetPlayerByIdE2ETests extends IntegrationTests {
+class GetPlayerByIdE2ETests extends IntegrationTestBase {
 
     @Autowired
     private PlayerRepository playerRepository;
@@ -29,7 +29,8 @@ class GetPlayerByIdE2ETests extends IntegrationTests {
         playerRepository.save(player);
 
         // When
-        var result = mockMvc.perform(get(String.format("/players/%s", player.getId())))
+        var result = mockMvc.perform(get(String.format("/players/%s", player.getId()))
+                        .header(AUTHORIZATION_HEADER, createJwt()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -48,7 +49,8 @@ class GetPlayerByIdE2ETests extends IntegrationTests {
         var garbageId = "123";
 
         // When
-        mockMvc.perform(get(String.format("/players/%s", garbageId)))
+        mockMvc.perform(get(String.format("/players/%s", garbageId))
+                        .header(AUTHORIZATION_HEADER, createJwt()))
                 .andExpect(status().isNotFound());
     }
 }

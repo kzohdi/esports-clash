@@ -7,6 +7,7 @@ import com.spoofy.esportsclash.auth.domain.viewmodel.LoggedInUserViewModel;
 import com.spoofy.esportsclash.auth.infrastructure.spring.dto.LoginDTO;
 import com.spoofy.esportsclash.auth.infrastructure.spring.dto.RegisterDTO;
 import com.spoofy.esportsclash.core.domain.viewmodel.IdResponse;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/auth")
+@Transactional
 public class AuthController {
 
     private final Pipeline pipeline;

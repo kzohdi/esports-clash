@@ -9,6 +9,7 @@ import com.spoofy.esportsclash.core.domain.viewmodel.IdResponse;
 import com.spoofy.esportsclash.player.domain.viewmodel.PlayerViewModel;
 import com.spoofy.esportsclash.player.infrastructure.spring.dto.CreatePlayerDTO;
 import com.spoofy.esportsclash.player.infrastructure.spring.dto.RenamePlayerDTO;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/players")
+@Transactional
 public class PlayerController {
 
     private final Pipeline pipeline;

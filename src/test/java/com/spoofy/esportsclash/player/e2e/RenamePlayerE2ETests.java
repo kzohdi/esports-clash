@@ -1,6 +1,6 @@
 package com.spoofy.esportsclash.player.e2e;
 
-import com.spoofy.esportsclash.IntegrationTests;
+import com.spoofy.esportsclash.IntegrationTestBase;
 import com.spoofy.esportsclash.player.application.port.PlayerRepository;
 import com.spoofy.esportsclash.player.domain.model.Player;
 import com.spoofy.esportsclash.player.infrastructure.spring.dto.RenamePlayerDTO;
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class RenamePlayerE2ETests extends IntegrationTests {
+class RenamePlayerE2ETests extends IntegrationTestBase {
 
     @Autowired
     private PlayerRepository playerRepository;
@@ -33,6 +33,7 @@ class RenamePlayerE2ETests extends IntegrationTests {
 
         // When
         mockMvc.perform(patch(String.format("/players/%s/name", player.getId()))
+                        .header(AUTHORIZATION_HEADER, createJwt())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(renamePlayerDTO)))
                 .andExpect(status().isOk());
@@ -50,6 +51,7 @@ class RenamePlayerE2ETests extends IntegrationTests {
 
         // When
         mockMvc.perform(patch(String.format("/players/%s/name", garbageId))
+                        .header(AUTHORIZATION_HEADER, createJwt())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(renamePlayerDTO)))
                 .andExpect(status().isNotFound());

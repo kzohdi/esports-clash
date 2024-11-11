@@ -1,6 +1,6 @@
 package com.spoofy.esportsclash.auth.e2e;
 
-import com.spoofy.esportsclash.IntegrationTests;
+import com.spoofy.esportsclash.IntegrationTestBase;
 import com.spoofy.esportsclash.auth.application.services.passwordhasher.PasswordHasher;
 import com.spoofy.esportsclash.auth.domain.model.User;
 import com.spoofy.esportsclash.auth.infrastructure.spring.dto.RegisterDTO;
@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-class RegisterE2ETests extends IntegrationTests {
+class RegisterE2ETests extends IntegrationTestBase {
 
     @Autowired
     private PasswordHasher passwordHasher;
