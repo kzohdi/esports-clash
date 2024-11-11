@@ -38,7 +38,7 @@ class RegisterTests {
 
         // Then
         assertEquals(command.emailAddress(), actualUser.getEmailAddress());
-        assertTrue(passwordHasher.match(command.password(), actualUser.getPassword()));
+        assertTrue(passwordHasher.match(command.password(), actualUser.getPasswordHash()));
     }
 
     @Test

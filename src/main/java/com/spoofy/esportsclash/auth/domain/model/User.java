@@ -11,11 +11,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class User extends BaseModel {
     private String emailAddress;
-    private String password;
+    private String passwordHash;
 
-    public User(String id, String emailAddress, String password) {
+    public User(String id, String emailAddress, String passwordHash) {
         super(id);
         this.emailAddress = emailAddress;
-        this.password = password;
+        this.passwordHash = passwordHash;
     }
 }

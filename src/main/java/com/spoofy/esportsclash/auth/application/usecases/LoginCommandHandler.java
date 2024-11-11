@@ -23,7 +23,7 @@ public class LoginCommandHandler implements Command.Handler<LoginCommand, Logged
         var user = userRepository.findByEmailAddress(loginCommand.emailAddress())
                 .orElseThrow(() -> new NotFoundException("User"));
 
-        var match = passwordHasher.match(loginCommand.password(), user.getPassword());
+        var match = passwordHasher.match(loginCommand.password(), user.getPasswordHash());
 
         if (!match) {
             throw new BadRequestException("The password is incorrect");

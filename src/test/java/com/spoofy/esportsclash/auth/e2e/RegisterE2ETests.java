@@ -45,7 +45,7 @@ class RegisterE2ETests extends IntegrationTests {
         // Then
         var actualUser = userRepository.findById(idResponse.getId()).get();
         assertEquals(registerDTO.getEmailAddress(), actualUser.getEmailAddress());
-        assertTrue(passwordHasher.match(registerDTO.getPassword(), actualUser.getPassword()));
+        assertTrue(passwordHasher.match(registerDTO.getPassword(), actualUser.getPasswordHash()));
     }
 
     @Test
@@ -54,7 +54,7 @@ class RegisterE2ETests extends IntegrationTests {
         var existingUser = new User("123", "contact@spoofy.com", "password");
         userRepository.save(existingUser);
 
-        var registerDTO = new RegisterDTO(existingUser.getEmailAddress(), existingUser.getPassword());
+        var registerDTO = new RegisterDTO(existingUser.getEmailAddress(), existingUser.getPasswordHash());
 
         // When
         mockMvc.perform(post("/auth/register")

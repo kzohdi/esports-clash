@@ -1,4 +1,4 @@
-package com.spoofy.esportsclash.player.infrastructure.persistence.jpa;
+package com.spoofy.esportsclash.auth.infrastructure.persistence.jpa;
 
 import com.spoofy.esportsclash.core.infrastructure.persistence.jpa.SQLEntity;
 import jakarta.persistence.Column;
@@ -10,12 +10,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "players")
+@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SQLPlayer extends SQLEntity {
-    @Column
-    private String name;
+public class SQLUser extends SQLEntity {
+    @Column(name = "email_address")
+    private String emailAddress;
+
+    @Column(name="password_hash")
+    private String passwordHash;
 }

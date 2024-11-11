@@ -12,7 +12,6 @@ import com.spoofy.esportsclash.auth.infrastructure.persistence.ram.InMemoryUserR
 import com.spoofy.esportsclash.core.domain.exceptions.BadRequestException;
 import com.spoofy.esportsclash.core.domain.exceptions.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -76,7 +75,7 @@ public class LoginTests {
         @Test
         void shouldThrowNotFound() {
             // Given
-            var command = new LoginCommand("contact@spoofy.fr", user.getPassword());
+            var command = new LoginCommand("contact@spoofy.fr", user.getPasswordHash());
 
             // When
             var exception = assertThrows(NotFoundException.class, () -> loginCommandHandler.handle(command));

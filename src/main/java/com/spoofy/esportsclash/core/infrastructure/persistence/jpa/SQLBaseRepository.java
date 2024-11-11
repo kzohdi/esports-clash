@@ -14,7 +14,7 @@ public abstract class SQLBaseRepository<M extends BaseModel, E extends SQLEntity
 
     @Override
     public void save(M model) {
-        E sqlEntity = mapper.toSQLBaseEntity(model);
+        E sqlEntity = mapper.toEntity(model);
 
         dataAccessor.save(sqlEntity);
     }
@@ -22,7 +22,7 @@ public abstract class SQLBaseRepository<M extends BaseModel, E extends SQLEntity
     @Override
     public Optional<M> findById(String id) {
         return dataAccessor.findById(id)
-                .map(mapper::toBaseEntity);
+                .map(mapper::toModel);
     }
 
     @Override
