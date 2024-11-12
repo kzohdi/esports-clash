@@ -1,4 +1,4 @@
-package com.spoofy.esportsclash.core.infrastructure.persistence;
+package com.spoofy.esportsclash.core.application.port;
 
 import com.spoofy.esportsclash.core.domain.model.BaseModel;
 
