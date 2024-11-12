@@ -1,7 +1,7 @@
 package com.spoofy.esportsclash.core.infrastructure.persistence.jpa;
 
 import com.spoofy.esportsclash.core.domain.model.BaseModel;
-import com.spoofy.esportsclash.core.infrastructure.persistence.BaseRepository;
+import com.spoofy.esportsclash.core.application.port.BaseRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
