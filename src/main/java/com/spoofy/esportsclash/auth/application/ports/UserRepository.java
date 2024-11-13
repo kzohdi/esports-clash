@@ -1,4 +1,4 @@
-package com.spoofy.esportsclash.auth.application.port;
+package com.spoofy.esportsclash.auth.application.ports;
 
 import com.spoofy.esportsclash.auth.domain.model.User;
 import com.spoofy.esportsclash.core.application.port.BaseRepository;

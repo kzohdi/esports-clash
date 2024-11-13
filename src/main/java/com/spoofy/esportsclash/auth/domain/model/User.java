@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User extends BaseModel {
+public class User extends BaseModel<User> {
     private String emailAddress;
     private String passwordHash;
 
@@ -17,5 +17,10 @@ public class User extends BaseModel {
         super(id);
         this.emailAddress = emailAddress;
         this.passwordHash = passwordHash;
+    }
+
+    @Override
+    public User deepClone() {
+        return new User(id, emailAddress, passwordHash);
     }
 }

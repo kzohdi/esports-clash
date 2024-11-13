@@ -2,7 +2,7 @@ package com.spoofy.esportsclash.player.e2e;
 
 import com.spoofy.esportsclash.IntegrationTestBase;
 import com.spoofy.esportsclash.core.domain.viewmodel.IdResponse;
-import com.spoofy.esportsclash.player.application.port.PlayerRepository;
+import com.spoofy.esportsclash.player.application.ports.PlayerRepository;
 import com.spoofy.esportsclash.player.infrastructure.spring.dto.CreatePlayerDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

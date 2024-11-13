@@ -1,6 +1,6 @@
 package com.spoofy.esportsclash.auth.usecases;
 
-import com.spoofy.esportsclash.auth.application.port.UserRepository;
+import com.spoofy.esportsclash.auth.application.ports.UserRepository;
 import com.spoofy.esportsclash.auth.application.services.jwtservice.JwtService;
 import com.spoofy.esportsclash.auth.application.services.jwtservice.JwtServiceImpl;
 import com.spoofy.esportsclash.auth.application.services.passwordhasher.BcryptPasswordHasher;
@@ -28,7 +28,7 @@ public class LoginTests {
 
     private final JwtService jwtService = new JwtServiceImpl(60);
 
-    private final LoginCommandHandler loginCommandHandler = new LoginCommandHandler(
+    private final LoginCommandHandler commandHandler = new LoginCommandHandler(
             userRepository,
             passwordHasher,
             jwtService
@@ -59,7 +59,7 @@ public class LoginTests {
             var command = new LoginCommand(user.getEmailAddress(), CLEAR_PASSWORD);
 
             // When
-            var result = loginCommandHandler.handle(command);
+            var result = commandHandler.handle(command);
 
             var authenticatedUser = jwtService.parse(result.getToken());
 
@@ -78,7 +78,7 @@ public class LoginTests {
             var command = new LoginCommand("contact@spoofy.fr", user.getPasswordHash());
 
             // When
-            var exception = assertThrows(NotFoundException.class, () -> loginCommandHandler.handle(command));
+            var exception = assertThrows(NotFoundException.class, () -> commandHandler.handle(command));
 
             // Then
             assertEquals("User was not found", exception.getMessage());
@@ -94,7 +94,7 @@ public class LoginTests {
             var command = new LoginCommand(user.getEmailAddress(), "azerty");
 
             // When
-            var exception = assertThrows(BadRequestException.class, () -> loginCommandHandler.handle(command));
+            var exception = assertThrows(BadRequestException.class, () -> commandHandler.handle(command));
 
             // Then
             assertEquals("The password is incorrect", exception.getMessage());

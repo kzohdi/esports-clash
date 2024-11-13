@@ -1,6 +1,6 @@
 package com.spoofy.esportsclash.auth.infrastructure.persistence.ram;
 
-import com.spoofy.esportsclash.auth.application.port.UserRepository;
+import com.spoofy.esportsclash.auth.application.ports.UserRepository;
 import com.spoofy.esportsclash.auth.domain.model.User;
 import com.spoofy.esportsclash.core.infrastructure.persistence.ram.InMemoryBaseRepository;
 

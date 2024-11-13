@@ -1,7 +1,7 @@
 package com.spoofy.esportsclash.player.e2e;
 
 import com.spoofy.esportsclash.IntegrationTestBase;
-import com.spoofy.esportsclash.player.application.port.PlayerRepository;
+import com.spoofy.esportsclash.player.application.ports.PlayerRepository;
 import com.spoofy.esportsclash.player.domain.model.Player;
 import com.spoofy.esportsclash.player.infrastructure.spring.dto.RenamePlayerDTO;
 import org.junit.jupiter.api.BeforeEach;

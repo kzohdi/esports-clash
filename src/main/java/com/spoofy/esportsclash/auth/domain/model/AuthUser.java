@@ -9,11 +9,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AuthUser extends BaseModel {
+public class AuthUser extends BaseModel<AuthUser> {
     private String emailAddress;
 
     public AuthUser(String id, String emailAddress) {
         super(id);
         this.emailAddress = emailAddress;
+    }
+
+    @Override
+    public AuthUser deepClone() {
+        return new AuthUser(id, emailAddress);
     }
 }

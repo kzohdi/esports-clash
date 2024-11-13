@@ -1,7 +1,7 @@
 package com.spoofy.esportsclash.auth.usecases;
 
 import com.spoofy.esportsclash.auth.application.exceptions.EmailAddressAlreadyInUseException;
-import com.spoofy.esportsclash.auth.application.port.UserRepository;
+import com.spoofy.esportsclash.auth.application.ports.UserRepository;
 import com.spoofy.esportsclash.auth.application.services.passwordhasher.BcryptPasswordHasher;
 import com.spoofy.esportsclash.auth.application.services.passwordhasher.PasswordHasher;
 import com.spoofy.esportsclash.auth.application.usecases.RegisterCommand;
@@ -19,7 +19,7 @@ class RegisterTests {
 
     private final PasswordHasher passwordHasher = new BcryptPasswordHasher();
 
-    private final RegisterCommandHandler registerCommandHandler = new RegisterCommandHandler(userRepository, passwordHasher);
+    private final RegisterCommandHandler commandHandler = new RegisterCommandHandler(userRepository, passwordHasher);
 
     @BeforeEach
     void setup() {
@@ -32,7 +32,7 @@ class RegisterTests {
         var command = new RegisterCommand("contact@spoofy.com", "password");
 
         // When
-        var result = registerCommandHandler.handle(command);
+        var result = commandHandler.handle(command);
 
         var actualUser = userRepository.findById(result.getId()).get();
 
@@ -50,7 +50,7 @@ class RegisterTests {
         var command = new RegisterCommand(existingUser.getEmailAddress(), "password");
 
         // When
-        var exception = assertThrows(EmailAddressAlreadyInUseException.class, () -> registerCommandHandler.handle(command));
+        var exception = assertThrows(EmailAddressAlreadyInUseException.class, () -> commandHandler.handle(command));
 
         // Then
         assertEquals("Email address is already in use", exception.getMessage());

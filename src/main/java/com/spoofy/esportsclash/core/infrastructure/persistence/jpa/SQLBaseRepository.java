@@ -1,16 +1,18 @@
 package com.spoofy.esportsclash.core.infrastructure.persistence.jpa;
 
-import com.spoofy.esportsclash.core.domain.model.BaseModel;
 import com.spoofy.esportsclash.core.application.port.BaseRepository;
+import com.spoofy.esportsclash.core.domain.model.BaseModel;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
 @RequiredArgsConstructor
-public abstract class SQLBaseRepository<M extends BaseModel, E extends SQLEntity> implements BaseRepository<M> {
+public abstract class SQLBaseRepository<M extends BaseModel<M>,
+        E extends SQLEntity,
+        D extends SQLBaseEntityDataAccessor<E>> implements BaseRepository<M> {
 
-    private final SQLBaseEntityMapper<M, E> mapper;
-    private final SQLBaseEntityDataAccessor<E> dataAccessor;
+    protected final SQLBaseEntityMapper<M, E> mapper;
+    protected final D dataAccessor;
 
     @Override
     public void save(M model) {
