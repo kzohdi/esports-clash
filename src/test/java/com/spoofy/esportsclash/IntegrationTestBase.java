@@ -1,6 +1,6 @@
 package com.spoofy.esportsclash;
 
-import com.spoofy.esportsclash.auth.application.port.UserRepository;
+import com.spoofy.esportsclash.auth.application.ports.UserRepository;
 import com.spoofy.esportsclash.auth.application.services.jwtservice.JwtService;
 import com.spoofy.esportsclash.auth.domain.model.User;
 import jakarta.transaction.Transactional;

@@ -9,6 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class BaseModel {
-    private String id;
+public abstract class BaseModel<M> {
+    protected String id;
+
+    public abstract M deepClone();
 }

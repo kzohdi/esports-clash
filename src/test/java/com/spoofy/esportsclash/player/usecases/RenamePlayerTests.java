@@ -1,7 +1,7 @@
 package com.spoofy.esportsclash.player.usecases;
 
 import com.spoofy.esportsclash.core.domain.exceptions.NotFoundException;
-import com.spoofy.esportsclash.player.application.port.PlayerRepository;
+import com.spoofy.esportsclash.player.application.ports.PlayerRepository;
 import com.spoofy.esportsclash.player.application.usecases.RenamePlayerCommand;
 import com.spoofy.esportsclash.player.application.usecases.RenamePlayerCommandHandler;
 import com.spoofy.esportsclash.player.domain.model.Player;
@@ -15,7 +15,7 @@ class RenamePlayerTests {
 
     private final PlayerRepository playerRepository = new InMemoryPlayerRepository();
 
-    private final RenamePlayerCommandHandler renamePlayerCommandHandler = new RenamePlayerCommandHandler(playerRepository);
+    private final RenamePlayerCommandHandler commandHandler = new RenamePlayerCommandHandler(playerRepository);
 
     @Test
     void shouldRenamePlayer() {
@@ -26,7 +26,7 @@ class RenamePlayerTests {
         var command = new RenamePlayerCommand(existingPlayer.getId(), "New Name");
 
         // When
-        renamePlayerCommandHandler.handle(command);
+        commandHandler.handle(command);
 
         var actualPlayer = playerRepository.findById(existingPlayer.getId()).get();
 
@@ -41,7 +41,7 @@ class RenamePlayerTests {
 
         // When
         var exception = assertThrows(NotFoundException.class,
-                () -> renamePlayerCommandHandler.handle(command));
+                () -> commandHandler.handle(command));
 
         assertEquals("Player with the key 123 not found", exception.getMessage());
     }

@@ -2,7 +2,7 @@ package com.spoofy.esportsclash.player.application.usecases;
 
 import an.awesome.pipelinr.Command;
 import com.spoofy.esportsclash.core.domain.exceptions.NotFoundException;
-import com.spoofy.esportsclash.player.application.port.PlayerRepository;
+import com.spoofy.esportsclash.player.application.ports.PlayerRepository;
 import com.spoofy.esportsclash.player.domain.mapper.PlayerMapper;
 import com.spoofy.esportsclash.player.domain.viewmodel.PlayerViewModel;
 import lombok.RequiredArgsConstructor;

@@ -2,7 +2,7 @@ package com.spoofy.esportsclash.auth.application.usecases;
 
 import an.awesome.pipelinr.Command;
 import com.spoofy.esportsclash.auth.application.exceptions.EmailAddressAlreadyInUseException;
-import com.spoofy.esportsclash.auth.application.port.UserRepository;
+import com.spoofy.esportsclash.auth.application.ports.UserRepository;
 import com.spoofy.esportsclash.auth.application.services.passwordhasher.PasswordHasher;
 import com.spoofy.esportsclash.auth.domain.model.User;
 import com.spoofy.esportsclash.core.domain.viewmodel.IdResponse;

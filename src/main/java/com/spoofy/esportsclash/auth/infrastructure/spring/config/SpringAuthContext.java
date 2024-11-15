@@ -1,6 +1,6 @@
 package com.spoofy.esportsclash.auth.infrastructure.spring.config;
 
-import com.spoofy.esportsclash.auth.application.port.AuthContext;
+import com.spoofy.esportsclash.auth.application.ports.AuthContext;
 import com.spoofy.esportsclash.auth.domain.model.AuthUser;
 import org.springframework.security.core.context.SecurityContextHolder;
 

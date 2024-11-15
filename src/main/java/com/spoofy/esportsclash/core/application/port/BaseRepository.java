@@ -4,7 +4,7 @@ import com.spoofy.esportsclash.core.domain.model.BaseModel;
 
 import java.util.Optional;
 
-public interface BaseRepository<M extends BaseModel> {
+public interface BaseRepository<M extends BaseModel<M>> {
     void save(M entity);
 
     Optional<M> findById(String id);

@@ -1,7 +1,7 @@
 package com.spoofy.esportsclash.player.usecases;
 
 import com.spoofy.esportsclash.core.domain.exceptions.NotFoundException;
-import com.spoofy.esportsclash.player.application.port.PlayerRepository;
+import com.spoofy.esportsclash.player.application.ports.PlayerRepository;
 import com.spoofy.esportsclash.player.application.usecases.DeletePlayerCommand;
 import com.spoofy.esportsclash.player.application.usecases.DeletePlayerCommandHandler;
 import com.spoofy.esportsclash.player.domain.model.Player;
@@ -14,7 +14,7 @@ class DeletePlayerTests {
 
     private final PlayerRepository playerRepository = new InMemoryPlayerRepository();
 
-    private final DeletePlayerCommandHandler deletePlayerCommandHandler = new DeletePlayerCommandHandler(playerRepository);
+    private final DeletePlayerCommandHandler commandHandler = new DeletePlayerCommandHandler(playerRepository);
 
     @Test
     void shouldRenamePlayer() {
@@ -25,7 +25,7 @@ class DeletePlayerTests {
         var command = new DeletePlayerCommand(existingPlayer.getId());
 
         // When
-        deletePlayerCommandHandler.handle(command);
+        commandHandler.handle(command);
 
         var playerQuery = playerRepository.findById(existingPlayer.getId());
 
@@ -40,7 +40,7 @@ class DeletePlayerTests {
 
         // When
         var exception = assertThrows(NotFoundException.class,
-                () -> deletePlayerCommandHandler.handle(command));
+                () -> commandHandler.handle(command));
 
         assertEquals("Player with the key 123 not found", exception.getMessage());
     }

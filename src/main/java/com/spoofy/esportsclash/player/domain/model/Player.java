@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Player extends BaseModel {
+public class Player extends BaseModel<Player> {
     private String name;
 
     public Player(String id, String name) {
@@ -18,5 +18,10 @@ public class Player extends BaseModel {
 
     public void rename(String name) {
         this.name = name;
+    }
+
+    @Override
+    public Player deepClone() {
+        return new Player(id, name);
     }
 }

@@ -1,7 +1,7 @@
 package com.spoofy.esportsclash.auth.application.usecases;
 
 import an.awesome.pipelinr.Command;
-import com.spoofy.esportsclash.auth.application.port.UserRepository;
+import com.spoofy.esportsclash.auth.application.ports.UserRepository;
 import com.spoofy.esportsclash.auth.application.services.jwtservice.JwtService;
 import com.spoofy.esportsclash.auth.application.services.passwordhasher.PasswordHasher;
 import com.spoofy.esportsclash.auth.domain.viewmodel.LoggedInUserViewModel;
